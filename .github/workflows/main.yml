@@ -20,7 +20,7 @@ jobs:
         
     - name: Build the site
       run: |
-        npm install
+        npm i
         npm build
     - name: Deploy to netlify
       # You may pin to the exact commit or the version.
