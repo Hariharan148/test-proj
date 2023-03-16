@@ -227,9 +227,8 @@ const IndexPage = () => (
                     {marginBottom: `var(--space-3)`}
                 }/>
             <h1>
+                Merge succesfull 1
 
-
-                Welcome to Production Server 1
 
             </h1>
             <p className={
