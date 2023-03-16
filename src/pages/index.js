@@ -260,7 +260,7 @@ const IndexPage = () => (
                 Edit
                 <code>src/pages/index.js</code>
 
-                to update this page dev 4.
+                to update this page dev 5.
 
             </p>
         </div>
