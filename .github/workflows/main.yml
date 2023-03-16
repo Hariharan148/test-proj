@@ -37,7 +37,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   build-dev:
-    if: github.event.pull_request.merged == true  && "github.ref == 'refs/heads/development'"
+    if: github.event.pull_request.merged == true  && github.ref == 'refs/heads/development'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   build-staging:
-    if: github.event.pull_request.merged == true  &&  "github.ref == 'refs/heads/staging'"
+    if: github.event.pull_request.merged == true  &&  github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2

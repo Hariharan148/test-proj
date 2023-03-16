@@ -228,7 +228,8 @@ const IndexPage = () => (
                 }/>
             <h1>
 
-                Welcome to Staging server merge
+
+                Welcome to Production Server 1
 
             </h1>
             <p className={
