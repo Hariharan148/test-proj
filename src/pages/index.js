@@ -227,12 +227,17 @@ const IndexPage = () => (
                     {marginBottom: `var(--space-3)`}
                 }/>
             <h1>
+<<<<<<< HEAD
                 Welcome to Development server 1 test
+=======
+                Welcome to Production Server 1
+>>>>>>> 875ba26bba81c6698b588183701e0261264c236b
             </h1>
             <p className={
                 styles.intro
             }>
-                <b>Example pages:</b>
+                <b>Example pages:
+                </b>
                 {" "}
                 {
                 samplePageLinks.map((link, i) => (
