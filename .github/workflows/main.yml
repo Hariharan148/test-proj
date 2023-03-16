@@ -10,7 +10,7 @@ on:
 
 jobs:
   build-main:
-    if: "github.event.pull_request.head.ref == 'main'"
+    if: "github.event.pull_request.base.ref == 'main'"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -37,7 +37,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   build-dev:
-    if: "github.event.pull_request.head.ref == 'development'"
+    if: "github.event.pull_request.base.ref == 'development'"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -64,7 +64,7 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   build-staging:
-    if: "github.event.pull_request.head.ref == 'staging'"
+    if: "github.event.pull_request.base.ref == 'staging'"
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
