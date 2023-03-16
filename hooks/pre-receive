@@ -1,12 +1,15 @@
 #!/bin/bash
 
-while read oldrev newrev refname
-do
-    if [[ "$refname" == "refs/heads/main" || "$refname" == "refs/heads/staging"  ]]
-    then
-        echo "Error: You cannot push to $refname branch"
-        exit 1
-    fi
-done
+current_branch=$(git rev-parse --abbrev-ref HEAD)
+base_branch=$(git rev-parse --abbrev-ref "$1")
 
-exit 0
+if [ "$base_branch" == "main" ] && [ "$current_branch" != "staging" ]; then
+  echo "Error: Only the staging branch can merge changes to the main branch."
+  exit 1
+elif [ "$base_branch" == "staging" ] && [ "$current_branch" != "development" ]; then
+  echo "Error: Only the development branch can merge changes to the staging branch."
+  exit 1
+elif [ "$base_branch" == "development" ] && [ "$current_branch" == "main" ] || [ "$current_branch" == "staging" ]; then
+  echo "Error: You cannot merge changes to this branch."
+  exit 1
+fi
