@@ -9,7 +9,7 @@ on:
       - staging
 
 jobs:
-  build-main:
+  build-prod:
     if: "github.event.pull_request.base.ref == 'main'"
     runs-on: ubuntu-latest
     steps:
@@ -60,7 +60,7 @@ jobs:
           production-branch: development
           deploy-message: '${{ github.event.head_commit.message }}'
       env:
-          NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID}}
+          NETLIFY_SITE_ID: ${{secrets.NETLIFY_SITE_ID_DEV}}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
   build-staging:
