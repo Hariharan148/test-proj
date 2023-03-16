@@ -227,7 +227,7 @@ const IndexPage = () => (
                     {marginBottom: `var(--space-3)`}
                 }/>
             <h1>
-                Welcome to Development server 1
+                Welcome to Development server 1 test
             </h1>
             <p className={
                 styles.intro
