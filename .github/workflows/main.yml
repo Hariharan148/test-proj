@@ -3,6 +3,7 @@ name: webilicious
 on:
   pull_request:
     types: [closed]
+    branches:
       - main
       - development
       - staging
