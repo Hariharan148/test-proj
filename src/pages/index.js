@@ -15,7 +15,7 @@ const links = [
 
         text: "Tutorial",
         url: "https://www.gatsbyjs.com/docs/tutorial",
-        description: "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site."
+        description: "A great 2 place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site."
 
 
 
