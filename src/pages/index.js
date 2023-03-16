@@ -258,7 +258,7 @@ const IndexPage = () => (
                 <br/>
                 Edit
                 <code>src/pages/index.js</code>
-                to update this page.
+                to update this page deve.
             </p>
         </div>
         <ul className={
