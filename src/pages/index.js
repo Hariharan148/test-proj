@@ -226,13 +226,17 @@ const IndexPage = () => (
                 style={
                     {marginBottom: `var(--space-3)`}
                 }/>
+            //
             <h1>
-                Welcome to Development server 1 test
+                Merge succesfull 1
+
+
             </h1>
             <p className={
                 styles.intro
             }>
-                <b>Example pages:</b>
+                <b>Example pages:
+                </b>
                 {" "}
                 {
                 samplePageLinks.map((link, i) => (
@@ -255,7 +259,9 @@ const IndexPage = () => (
                 <br/>
                 Edit
                 <code>src/pages/index.js</code>
+
                 to update this page dev 1.
+
             </p>
         </div>
         <ul className={
