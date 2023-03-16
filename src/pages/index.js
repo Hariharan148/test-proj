@@ -227,12 +227,16 @@ const IndexPage = () => (
                     {marginBottom: `var(--space-3)`}
                 }/>
             <h1>
-                Welcome to Staging server 1
+
+                Welcome to Staging server merge
+
+
             </h1>
             <p className={
                 styles.intro
             }>
-                <b>Example pages:</b>
+                <b>Example pages:
+                </b>
                 {" "}
                 {
                 samplePageLinks.map((link, i) => (
