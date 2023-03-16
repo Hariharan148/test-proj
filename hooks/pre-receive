@@ -1,0 +1,12 @@
+#!/bin/bash
+
+while read oldrev newrev refname
+do
+    if [[ "$refname" != "refs/heads/main" & "$refname" != "refs/heads/staging"  ]]
+    then
+        echo "Error: You cannot push to $refname branch"
+        exit 1
+    fi
+done
+
+exit 0
