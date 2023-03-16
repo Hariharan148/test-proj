@@ -1,0 +1,27 @@
+name: Merge Check
+
+on:
+  pull_request:
+    types: [closed]
+
+jobs:
+  merge_check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Verify Merge
+        run: |
+          if [[ ${{ github.ref }} == 'refs/heads/main' && ${{ github.event.pull_request.base.ref }} != 'staging' ]]; then
+            echo "Merging to main branch is only allowed from staging branch"
+            exit 1
+          elif [[ ${{ github.ref }} == 'refs/heads/staging' && ${{ github.event.pull_request.base.ref }} != 'development' ]]; then
+            echo "Merging to staging branch is only allowed from development branch"
+            exit 1
+          elif [[ ${{ github.ref }} != 'refs/heads/main' && ${{ github.ref }} != 'refs/heads/staging' && ${{ github.event.pull_request.base.ref }} != 'development' ]]; then
+            echo "Merging to development branch is only allowed from non-main, non-staging branches"
+            exit 1
+          else
+            echo "Merge is allowed"
+          fi
