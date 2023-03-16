@@ -13,3 +13,5 @@ elif [ "$base_branch" == "development" ] && [ "$current_branch" == "main" ] || [
   echo "Error: You cannot merge changes to this branch."
   exit 1
 fi
+
+#hello
