@@ -230,7 +230,6 @@ const IndexPage = () => (
 
                 Welcome to Staging server merge
 
-
             </h1>
             <p className={
                 styles.intro
