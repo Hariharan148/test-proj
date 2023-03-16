@@ -232,7 +232,8 @@ const IndexPage = () => (
             <p className={
                 styles.intro
             }>
-                <b>Example pages:</b>
+                <b>Example pages:
+                </b>
                 {" "}
                 {
                 samplePageLinks.map((link, i) => (
