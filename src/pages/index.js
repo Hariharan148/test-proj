@@ -259,7 +259,7 @@ const IndexPage = () => (
                 <br/>
                 Edit
                 <code>src/pages/index.js</code>
-                to update this page deve.
+                to update this page develop.
             </p>
         </div>
         <ul className={
