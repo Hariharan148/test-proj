@@ -1,8 +1,8 @@
-name: Merge Check
+name: Pre-Merge Checks
 
 on:
-  pull_request:
-    types: [closed]
+  pull_request_target:
+    types: [opened, synchronize, reopened]
 
 jobs:
   merge_check:
