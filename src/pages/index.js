@@ -227,8 +227,8 @@ const IndexPage = () => (
                     {marginBottom: `var(--space-3)`}
                 }/>
             <h1>
-
                 Merge succesfull
+
 
             </h1>
             <p className={
