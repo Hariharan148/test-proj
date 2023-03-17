@@ -1,27 +1,50 @@
-name: Pre-Merge Checks
+name: Branching Conditions
 
 on:
-  pull_request_target:
-    types: [opened, synchronize, reopened]
+  pull_request:
+    branches:
+      - main
+      - staging
+      - development
+  push:
+    branches:
+      - main
+      - staging
+      - development
 
 jobs:
-  merge_check:
+  check-branch:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout Code
         uses: actions/checkout@v2
 
-      - name: Verify Merge
+      - name: Check Branch
         run: |
-          if [[ ${{ github.ref }} == 'refs/heads/main' && ${{ github.event.pull_request.base.ref }} != 'staging' ]]; then
-            echo "Merging to main branch is only allowed from staging branch"
-            exit 1
-          elif [[ ${{ github.ref }} == 'refs/heads/staging' && ${{ github.event.pull_request.base.ref }} != 'development' ]]; then
-            echo "Merging to staging branch is only allowed from development branch"
-            exit 1
-          elif [[ ${{ github.ref }} != 'refs/heads/main' && ${{ github.ref }} != 'refs/heads/staging' && ${{ github.event.pull_request.base.ref }} != 'development' ]]; then
-            echo "Merging to development branch is only allowed from non-main, non-staging branches"
-            exit 1
+          if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
+            if [ "$GITHUB_HEAD_REF" == "main" ]; then
+              if [ "$GITHUB_BASE_REF" != "staging" ]; then
+                echo "Only staging branch can merge into main branch"
+                exit 1
+              fi
+            elif [ "$GITHUB_HEAD_REF" == "staging" ]; then
+              if [ "$GITHUB_BASE_REF" != "development" ]; then
+                echo "Only development branch can merge into staging branch"
+                exit 1
+              fi
+            elif [ "$GITHUB_HEAD_REF" != "main" ] && [ "$GITHUB_HEAD_REF" != "staging" ] && [ "$GITHUB_BASE_REF" != "development" ]; then
+              echo "Other than main and staging branch any branch can merge with development branch"
+              exit 1
+            fi
           else
-            echo "Merge is allowed"
+            if [ "$GITHUB_REF" == "refs/heads/main" ]; then
+              echo "Cannot commit directly to main branch"
+              exit 1
+            elif [ "$GITHUB_REF" == "refs/heads/staging" ]; then
+              echo "Cannot commit directly to staging branch"
+              exit 1
+            elif [ "$GITHUB_REF" == "refs/heads/development" ]; then
+              echo "Cannot commit directly to development branch"
+              exit 1
+            fi
           fi
