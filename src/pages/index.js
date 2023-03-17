@@ -261,7 +261,7 @@ const IndexPage = () => (
                 <code>src/pages/index.js</code>
 
                 to update this page dev 61.
-
+                d
             </p>
         </div>
         <ul className={
