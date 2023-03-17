@@ -6,11 +6,7 @@ on:
       - main
       - staging
       - development
-  push:
-    branches:
-      - main
-      - staging
-      - development
+
 
 jobs:
   check-branch:
@@ -21,7 +17,6 @@ jobs:
 
       - name: Check Branch
         run: |
-          if [ "$GITHUB_EVENT_NAME" == "pull_request" ]; then
             if [ "$GITHUB_HEAD_REF" == "main" ]; then
               if [ "$GITHUB_BASE_REF" != "staging" ]; then
                 echo "Only staging branch can merge into main branch"
@@ -36,15 +31,3 @@ jobs:
               echo "Other than main and staging branch any branch can merge with development branch"
               exit 1
             fi
-          else
-            if [ "$GITHUB_REF" == "refs/heads/main" ]; then
-              echo "Cannot commit directly to main branch"
-              exit 1
-            elif [ "$GITHUB_REF" == "refs/heads/staging" ]; then
-              echo "Cannot commit directly to staging branch"
-              exit 1
-            elif [ "$GITHUB_REF" == "refs/heads/development" ]; then
-              echo "Cannot commit directly to development branch"
-              exit 1
-            fi
-          fi
